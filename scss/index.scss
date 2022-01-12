@@ -7,7 +7,10 @@ $color3 : hsl(246, 80%, 60%);
 
 $task_colors :hsl(15, 100%, 70%), hsl(195, 74%, 62%), hsl(348, 100%, 68%), hsl(145, 58%, 55%), hsl(264, 64%, 52%), hsl(43, 84%, 65%);
 
-
+:root {
+  --animate-duration: 800ms;
+  --animate-delay: 0.1s;
+}
 
 body{
   font-family: "Rubik";
@@ -194,7 +197,7 @@ p{
   }
 
   .form-control{
-    width: 100%;
+    width: 70%;
     font: inherit;
     margin: 0;
     padding: 0;
@@ -202,19 +205,36 @@ p{
     color: white;
     background: none;
     border : 0.5px solid white;
+    display: inline-block;
 
+  }
+
+  i{
+    width: 20%;
+    font-size: 80%;
+    display: inline-block;
+  }
+
+
+  i:hover{
+    transform: scale(1.2);
   }
 
   .send{
     position: absolute;
     top: 0;
     visibility: visible;
-    z-index: 4;
+
   }
 
   .hide{
     visibility: hidden;
     z-index: -5;
+  }
+
+  .bounce_{
+    animation: pulse;
+    animation-duration: 2s;
   }
 
 

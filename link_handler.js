@@ -1,3 +1,6 @@
+//import {animateCSS} from './scripts/animation.js'
+
+
 const showContent = function(event) {
     console.log("Show content");
     const clickedLink = event.target;
@@ -32,23 +35,25 @@ const edit_hrs = event => {
   hrs_el.classList.add("hide");
   form.classList.remove("hide");
 
+  event.preventDefault();
+
 }
 
 const save_hrs = event => {
   console.log("saving hours");
 
   /*form element .send*/
-  const submittedForm = event.currentTarget;
+  const submit_btn = event.currentTarget;
 
   /*contenedor div*/
-  const contenedor = submittedForm.offsetParent.offsetParent;
+  const contenedor = submit_btn.offsetParent.offsetParent;
 
 
   const hrs_el = contenedor.querySelector(".hrs");
   const form = contenedor.querySelector(".send");
 
   /*get hrs*/
-  const text_el = submittedForm.querySelector(".form-control").value;
+  const text_el = contenedor.querySelector(".form-control").value;
 
   const lbl_period = document.querySelector("p.show.active").innerHTML;
 
@@ -59,7 +64,7 @@ const save_hrs = event => {
   if (lbl_period == "Monthly"){period="monthly";}
 
   /*get j*/
-  const j = submittedForm.querySelector(".form-control").id.slice(-1);
+  const j = contenedor.querySelector(".form-control").id.slice(-1);
 
   /*replace data*/
   data[j].timeframes[period].current = text_el;
@@ -72,10 +77,14 @@ const save_hrs = event => {
   hrs_el.classList.remove("hide");
   form.classList.add("hide");
 
+  
+
+  event.preventDefault();
+
 }
 
 
 document.querySelector("#link_row").addEventListener("click", showContent);
 
 document.querySelectorAll("img.elip").forEach(a => a.addEventListener("click", edit_hrs));
-document.querySelectorAll("form.send").forEach(a => a.addEventListener("submit", save_hrs))
+document.querySelectorAll("i.fa-check-circle").forEach(a => a.addEventListener("click", save_hrs));
